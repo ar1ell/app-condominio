@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/acacias.png' %}">
+    
+
+    <title>{% block title %}Home{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
+    
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+{% block navbar %}
+    {% include  '_items/navbar.html' %}
+{% endblock %}
+
+<div class="col-xs-12">
+    {% for message in messages %}
+        <div class="alert alert-dismissible alert-{{ message.tags }}">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    <footer>
+        <p></p>
+        <p>&copy; Edifício das Acácias 2022</p>
+    </footer>
+</div>
+<!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

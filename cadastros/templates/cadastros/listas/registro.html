@@ -1,0 +1,41 @@
+{% extends 'paginas/base.html' %}
+{% load static %}
+{% block title %}Apartamentos{% endblock %}
+
+
+{% block content %}
+<div class="jumbotron">
+    <h3>Resgistro</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+                <th>Item</th>
+                <th>Quantidade</th>
+                <th>Apartamento</th>
+                <th>Opções</th>
+            </tr>
+
+            {% for registro in object_list %}
+            <tr>
+                <th>{{ registro.nome }}</th>
+                <td>{{ registro.descricao }}</td>
+                <td>
+                    <a href="{% url 'editar-registro' registro.pk %}" class="btn btn-info btn-sm" title="Editar">E</a>
+                    <a href="{% url 'excluir-registro' registro.pk %}" class="btn btn-danger btn-sm" title="Excluir">x</a>
+                   
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum campo registrado.</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}
